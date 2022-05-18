@@ -1,0 +1,142 @@
+extends base.pug
+block styles
+    link(rel='stylesheet' href='https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/style.css')
+block scripts
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js')
+    script(src='https://getbootstrap.com/docs/4.4/dist/js/bootstrap.bundle.min.js')
+    script(src='/hi.js')
+block content
+    //- form(action="/" method="POST")
+    //-     input(type="text", name="name")
+    //-     input(type="submit")  
+    .modal-dialog
+        .modal-content
+          // Modal Header
+          .modal-header
+            //- button.close(type="button", data-dismiss="modal")
+            //-   span(aria-hidden="true") ×
+            //-   span.sr-only Close
+            h4#myModalLabel.modal-title
+              | Tra cứu hành trình đơn hàng
+          // Modal Body
+          .modal-body
+            //#editForm.form(role='form' method='GET' action='https://www.google.com/')
+            form(role='form' method='POST' action='/')
+              div.form-group
+                //- label(for='name') Name:
+                input#name.form-control(type='text', placeholder='nhập mã vận đơn' name='name')
+              div.hi.justify-content-center
+                <input class="btn btn-primary" type="submit" value="Submit">
+                <input class="btn btn-primary" type="reset" value="Reset">
+              
+    each val, index in arrTotal   
+        .wrap
+            .container
+                //- ACCORDION BEGIN
+                #accordion
+                    .card
+                        .card-header
+                            a.card-link(data-toggle='collapse', href=`#collapse${index}`)
+                                | !{val.n}
+                        div(id=`collapse${index}`).collapse.show(data-parent='#accordion')
+                            .card-body
+                                | !{val.m}
+
+//- .card-body
+//-     style.
+//-         #menu ul{
+//-         list-style: none;
+//-         }
+//-         #menu li{
+//-         display: inline;
+//-         }
+//-     #menu
+//-         ul
+//-             li First menu item
+//-             li Second menu item
+//-             li Third menu item
+    
+//-  .card-body
+//-     | !{val.m}
+
+    //- if ({x}.m)
+    //-     .wrap
+    //-         .container
+    //-             //- ACCORDION BEGIN
+    //-             #accordion
+    //-                 .card
+    //-                     .card-header
+    //-                         a.card-link(data-toggle='collapse', href='#collapseOne')
+    //-                             | !{x.n}
+    //-                     #collapseOne.collapse.show(data-parent='#accordion')
+    //-                         .card-body
+    //-                             | !{x.m}
+    //-                 .card
+    //-                     .card-header
+    //-                         a.card-link(data-toggle='collapse', href='#collapseTwo')
+    //-                             | Collapsible Group Item #2
+    //-                     #collapseTwo.collapse.show(data-parent='#accordion')
+    //-                         .card-body
+    //-                             | Lorem ipsum..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//- head
+//-   meta(charset='utf-8')
+//-   title Title2
+//-   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css')
+
+//-   body
+//-     p test
+//-     .modal-dialog
+//-         .modal-content
+//-           // Modal Header
+//-           .modal-header
+//-             button.close(type="button", data-dismiss="modal")
+              
+              
+//-             h4#myModalLabel.modal-title
+//-                 |Resource
+//-           // Modal Body
+//-           .modal-body
+//-             //#editForm.form(role='form' method='GET' action='/')
+//-             form(role='form' method='POST' action='localhost:3000/')
+//-               div.form-group
+//-                 label(for='name') Name:
+//-                 input#name.form-control(type='text', placeholder='name' name='name')
+              
+            
+//-               button.btn.btn-primary(type="submit", name="submit") Submit
+              
+                
+//-           // Modal Footer
+//-           .modal-footer
+//-             h4 footer
+
+//-     // footer
+//-     p.foot.text-xs-center test

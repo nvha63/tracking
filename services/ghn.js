@@ -1,5 +1,11 @@
 var request = require('request');
-function spx(num, courier, callback) {
+
+// var num = "GA3D3GCB";
+// var courier = "ghn";
+function ghn(num, courier,callback) {
+
+    // var num = "SPXVN028303631706";
+    // var courier = "spx-vn";
     var dataTemp = {};
     request.post({
             headers: {
@@ -25,7 +31,6 @@ function spx(num, courier, callback) {
         },
         function (error, response, body) {
             var data = JSON.parse(body).data
-            console.log(data);
             var data1 = data[0]
             dataTemp = data1.origin_data
             var track = dataTemp.trackinfo;
@@ -40,4 +45,4 @@ function spx(num, courier, callback) {
             return callback(arrData)
         });
 }
-module.exports = spx;
+module.exports = ghn;

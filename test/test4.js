@@ -1,5 +1,11 @@
-var request = require('request');
-function spx(num, courier, callback) {
+//test lan cuoi
+
+if (arr[i].slice(0, 1) == "1") {
+    xy++;
+    const start = Date.now();
+    var request = require('request');
+    var num = "SPXVN028303631706";
+    var courier = "spx-vn";
     var dataTemp = {};
     request.post({
             headers: {
@@ -24,20 +30,19 @@ function spx(num, courier, callback) {
             }
         },
         function (error, response, body) {
-            var data = JSON.parse(body).data
-            console.log(data);
-            var data1 = data[0]
-            dataTemp = data1.origin_data
-            var track = dataTemp.trackinfo;
-            var arrData = [];
-            for (let index = 0; index < track.length; index++) {
-                let obj = {
-                    date: track[index].Date,
-                    status: track[index].StatusDescription
-                }
-                arrData.push(obj);
-            }
-            return callback(arrData)
+            var data = JSON.parse(body).data;
+            var data1 = data[0];
+            dataTemp = data1.origin_data;
+            //console.log(dataTemp);
+            // console.log(body.data);
+            // console.log(typeof(body));
+
+            // var q = {
+            //     m: JSON.stringify(dataTemp),
+            //     n: arr[i]
+            // }
+            // arrTotal.push(q);
+            name(xy, dataTemp);
+            console.log(arr[i] + ' Time:', Date.now() - start, 'ms');
         });
 }
-module.exports = spx;

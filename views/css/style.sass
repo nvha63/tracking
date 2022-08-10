@@ -1,0 +1,90 @@
+$default-font: 'Open Sans', sans-serif
+
+$accent: #ffb74d
+$link: #4a90e2
+$link_hover: darken($link, 10%)
+$accent_hover: darken($accent, 10%)
+
+$text_color: #2f3640
+$gray: #edeff0
+$dark_gray: #b5bac1
+
+@function rem($px)
+	@return $px / 16px + 0rem
+	@return $px
+
+@mixin inline-block($va: top)
+	display: inline-block
+	vertical-align: $va
+
+html
+	font-size: 16px
+	background: $gray
+	font-family: $default-font
+
+h1
+	font-size: 20px
+	margin-bottom: 20px
+
+.wrap
+	width: 500px
+	margin: auto
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%,-50%)
+	border-radius: 4px
+	background-color: #ffffff
+	box-shadow: 0 1px 2px 0 #c9ced1
+	padding: rem(20px)
+	margin-bottom: rem(20px)
+
+.panel-heading a
+	&:after
+		font-family: 'FontAwesome'
+		content: "\f0d7"
+		float: right
+		color: grey
+	&.collapsed:after
+		content: "\2b"
+	&:after
+		font-family: 'FontAwesome'
+		content: "\2212"
+		float: right
+		color: grey
+		&.collapsed:after
+		content: "\2b"
+
+//accordion
+.card
+	border-radius: 3px
+	box-shadow: 0 24px 26px -11px rgba(0, 0, 0, 0.09)
+	background-color: #ffffff
+	border: solid 1px #e5e5e5
+	margin-bottom: 20px
+	// font-weight: bold
+	&-header
+		background: none
+		border-bottom: none
+		font-size: rem(18px)
+		padding: 0
+		a
+			position: relative
+			color: $text_color
+			display: block
+			padding: rem(10px) rem(20px)
+			transition: all .8s
+			background-color: #e5e5e5
+			&:after
+				font-family: 'FontAwesome'
+				content: "\f00d"
+				float: right
+				color: grey
+			&.collapsed
+				background-color: #FFF
+				&:after
+					content: "\f0dd"
+			
+	&-body
+		// color: $gray
+		font-size: rem(17px)

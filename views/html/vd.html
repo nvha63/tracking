@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Increase Bootstrap Toast Autohide Time Via jQuery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Style for positioning toast */
+        .toast {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <script>
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                // Passing option
+                $("#myToast").toast({
+                    delay: 3000
+                });
+
+                // Show toast
+                $("#myToast").toast("show");
+            });
+        });
+    </script>
+    <div class="m-4">
+        <button type="button" class="btn btn-primary" id="myBtn">Show Toast</button>
+
+        <div class="toast" id="myToast">
+            <div class="toast-header">
+                <strong class="me-auto"><i class="bi-gift-fill"></i> We miss you!</strong>
+                <small>10 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                It's been a long time since you visited us. We've something special for you. <a href="#">Click here!</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showSuccessToast() {
+            toast({
+                title: "Thành công!",
+                message: "Bạn đã đăng ký thành công tài khoản tại F8.",
+                type: "success",
+                duration: 3000
+            });
+        }
+
+        function toast({
+            title = "",
+            message = "",
+            type = "info",
+            duration = 3000
+        }) {
+            const main = document.getElementById("toast");
+            if (main) {
+                const toast = document.createElement("div");
+
+                // Auto remove toast
+                const autoRemoveId = setTimeout(function () {
+                    main.removeChild(toast);
+                }, duration + 1000);
+
+                // Remove toast when clicked
+                toast.onclick = function (e) {
+                    if (e.target.closest(".toast__close")) {
+                        main.removeChild(toast);
+                        clearTimeout(autoRemoveId);
+                    }
+                };
+
+                const icons = {
+                    success: "fas fa-check-circle",
+                    info: "fas fa-info-circle",
+                    warning: "fas fa-exclamation-circle",
+                    error: "fas fa-exclamation-circle"
+                };
+                const icon = icons[type];
+                const delay = (duration / 1000).toFixed(2);
+
+                toast.classList.add("toast", `toast--${type}`);
+                toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
+
+                toast.innerHTML = `
+        <div class="toast__icon">
+            <i class="${icon}"></i>
+        </div>
+        <div class="toast__body">
+            <h3 class="toast__title">${title}</h3>
+            <p class="toast__msg">${message}</p>
+        </div>
+        <div class="toast__close">
+            <i class="fas fa-times"></i>
+        </div>
+        `;
+                main.appendChild(toast);
+            }
+        }
+    </script>
+</body>
+
+</html>

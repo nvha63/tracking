@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+        function check() {
+            var searchtext = document.getElementById("q").value;
+            if (searchtext == '') {
+                alert('Enter any character');
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form action='search.php' method='GET' onSubmit="return check();">
+        <input type="text" id="q" name="q" class='textbox'>
+        <input type="submit" id='submit' value="Search" class='button'>
+    </form>
+</body>
+
+</html>
